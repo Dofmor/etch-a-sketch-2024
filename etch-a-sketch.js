@@ -27,7 +27,20 @@ function setSketchPad(size) {
     }
 }
 
+function clearSketchPad () {
+    console.log('clear')
+    let allSquares = document.querySelectorAll('.square')
+
+    allSquares.forEach((square) => {
+        if (square.classList.contains('square--filled')) {
+            square.classList.remove('square--filled')
+        }
+    })
+}
+
 setSketchPad(16)
+let eraseButton = document.querySelector('#erase')
+eraseButton.addEventListener('click', clearSketchPad)
 
 
 // sketchpad.style.background-color = 'black';
