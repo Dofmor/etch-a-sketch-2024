@@ -10,14 +10,26 @@ body {
 .sketchpad {
     border-style: solid;
     border-color: black;
+    display: flex;
+    flex-direction: column;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     height: 500px;
     width: 500px;
 }
+
+.sketchpad-row {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    border-style: solid;
+    border-color: black;
+}
+
 .square {
     border-style: solid;
     border-color: pink;
+    flex-grow: 1;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
 }
