@@ -1,9 +1,9 @@
-let sketchpad = document.querySelector(".sketchpad")
 
 
 /*Sets up the grid on the the sketchpad*/
 function setSketchPad(size) {
 
+    let sketchpad = document.querySelector(".sketchpad")
     sketchpad.addEventListener('mouseover', (event) => {
         let target = event.target
 
@@ -27,8 +27,8 @@ function setSketchPad(size) {
     }
 }
 
-function clearSketchPad () {
-    console.log('clear')
+function eraseSketchPad() {
+    console.log('erase')
     let allSquares = document.querySelectorAll('.square')
 
     allSquares.forEach((square) => {
@@ -38,9 +38,34 @@ function clearSketchPad () {
     })
 }
 
+function clearSketchPad() {
+    console.log('clear')
+
+    let sketchpad = document.querySelector(".sketchpad")
+    while (sketchpad.firstChild) {
+        sketchpad.removeChild(sketchpad.lastChild)
+    }
+
+}
+
+function sliderAction() {
+    console.log('slider action')
+    console.log(this.value)
+
+    let size = this.value
+    clearSketchPad()
+    setSketchPad(size)
+
+    let sizeDisplay = document.querySelector(".size")
+    sizeDisplay.textContent = `${size} x ${size}`
+
+}
+
 setSketchPad(16)
 let eraseButton = document.querySelector('#erase')
-eraseButton.addEventListener('click', clearSketchPad)
+eraseButton.addEventListener('click', eraseSketchPad)
 
-
+let sliderInput = document.querySelector('input')
+sliderInput.addEventListener('mouseup', sliderAction)
 // sketchpad.style.background-color = 'black';
+
