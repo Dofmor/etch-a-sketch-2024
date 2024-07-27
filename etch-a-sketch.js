@@ -4,16 +4,6 @@ let sketchpad = document.querySelector(".sketchpad")
 /*Sets up the grid on the the sketchpad*/
 function setSketchPad() {
 
-    sketchpad.addEventListener('mouseover', (event) => {
-        let target = event.target
-
-        console.log(target)
-        if (target.classList.contains('square')) {
-            console.log('square')
-            target.classList.add('square--filled')
-        }
-    })
-
     for (let i = 0; i < gridSize; i++) {
         let row = document.createElement('div')
         row.classList.add('sketchpad-row')
@@ -26,6 +16,8 @@ function setSketchPad() {
         sketchpad.appendChild(row)
     }
 }
+
+setSketchPad()
 
 //resets each square back to default color
 function eraseSketchPad() {
@@ -47,9 +39,10 @@ function clearSketchPad() {
 
 }
 
-/*TODO*/
+//restarts the sketchpad
 function restart() {
     clearSketchPad()
+    setSketchPad()
 }
 
 //resets the board and display each time user lets go of click
@@ -58,19 +51,34 @@ function sliderAction() {
     console.log(this.value)
 
     gridSize = this.value
-    clearSketchPad()
-    setSketchPad()
+    restart()
 
     let sizeDisplay = document.querySelector(".size")
     sizeDisplay.textContent = `${gridSize} x ${gridSize}`
 
 }
 
-setSketchPad()
-let eraseButton = document.querySelector('#erase')
-eraseButton.addEventListener('click', eraseSketchPad)
+//sets every eventlistener 
+function listen() {
 
-let sliderInput = document.querySelector('input')
-sliderInput.addEventListener('mouseup', sliderAction)
+    sketchpad.addEventListener('mouseover', (event) => {
+        let target = event.target
+
+        console.log(target)
+        if (target.classList.contains('square')) {
+            console.log('square')
+            target.classList.add('square--filled')
+        }
+    })
+
+    let eraseButton = document.querySelector('#erase')
+    eraseButton.addEventListener('click', eraseSketchPad)
+
+    let sliderInput = document.querySelector('input')
+    sliderInput.addEventListener('mouseup', sliderAction)
+    sliderInput.addEventListener('input', sliderAction)
+}
+
+listen()
 // sketchpad.style.background-color = 'black';
 
