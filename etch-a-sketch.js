@@ -1,9 +1,9 @@
-
+let gridSize = 1
+let sketchpad = document.querySelector(".sketchpad")
 
 /*Sets up the grid on the the sketchpad*/
-function setSketchPad(size) {
+function setSketchPad() {
 
-    let sketchpad = document.querySelector(".sketchpad")
     sketchpad.addEventListener('mouseover', (event) => {
         let target = event.target
 
@@ -14,11 +14,11 @@ function setSketchPad(size) {
         }
     })
 
-    for (let i = 0; i < size; i++) {
+    for (let i = 0; i < gridSize; i++) {
         let row = document.createElement('div')
         row.classList.add('sketchpad-row')
 
-        for (let k = 0; k < size; k++) {
+        for (let k = 0; k < gridSize; k++) {
             let square = document.createElement('div')
             square.classList.add('square')
             row.appendChild(square)
@@ -27,8 +27,8 @@ function setSketchPad(size) {
     }
 }
 
+//resets each square back to default color
 function eraseSketchPad() {
-    console.log('erase')
     let allSquares = document.querySelectorAll('.square')
 
     allSquares.forEach((square) => {
@@ -38,30 +38,35 @@ function eraseSketchPad() {
     })
 }
 
+//removes all row chidlren in sketchpad
 function clearSketchPad() {
-    console.log('clear')
 
-    let sketchpad = document.querySelector(".sketchpad")
     while (sketchpad.firstChild) {
         sketchpad.removeChild(sketchpad.lastChild)
     }
 
 }
 
+/*TODO*/
+function restart() {
+    clearSketchPad()
+}
+
+//resets the board and display each time user lets go of click
 function sliderAction() {
     console.log('slider action')
     console.log(this.value)
 
-    let size = this.value
+    gridSize = this.value
     clearSketchPad()
-    setSketchPad(size)
+    setSketchPad()
 
     let sizeDisplay = document.querySelector(".size")
-    sizeDisplay.textContent = `${size} x ${size}`
+    sizeDisplay.textContent = `${gridSize} x ${gridSize}`
 
 }
 
-setSketchPad(16)
+setSketchPad()
 let eraseButton = document.querySelector('#erase')
 eraseButton.addEventListener('click', eraseSketchPad)
 

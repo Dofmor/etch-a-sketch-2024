@@ -1,13 +1,16 @@
 body {
+    background-color: #1F1F36;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #fff;
 }
 
 
 .sketchpad {
+    background-color: #fff;
     border-style: solid;
     border-color: #FE5163;
     display: flex;
@@ -41,6 +44,6 @@ body {
     justify-content: space-evenly;
 }
 
-input {
+input{
     width: 200px;
 }
