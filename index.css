@@ -39,8 +39,10 @@ body {
 }
 
 .options-container {
+    height: 75px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-evenly;
 }
 
@@ -61,4 +63,12 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #FE5163;
     height: 1rem;
     width: 1rem;    
+ }
+
+ #erase {
+    border: solid 1px #FE5163;
+    border-radius: 5px;
+    background-color: #FE5163;
+    color: #fff;
+    padding: 5px 5px 5px 5px;
  }
