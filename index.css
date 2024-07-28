@@ -44,6 +44,21 @@ body {
     justify-content: space-evenly;
 }
 
-input{
-    width: 200px;
-}
+#myinput {
+    background: linear-gradient(to right, #FE5163 0%, #FE5163 50%, #fff 50%, #fff 100%);
+    border: solid 1px #FE5163;  
+    border-radius: 8px;
+    width: 356px;
+    height: 5px;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+} 
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 50%;
+    background-color: #FE5163;
+    height: 1rem;
+    width: 1rem;    
+ }

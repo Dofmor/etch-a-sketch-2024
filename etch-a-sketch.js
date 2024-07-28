@@ -1,4 +1,4 @@
-let gridSize = 1
+let gridSize = 32
 let sketchpad = document.querySelector(".sketchpad")
 
 /*Sets up the grid on the the sketchpad*/
@@ -47,8 +47,6 @@ function restart() {
 
 //resets the board and display each time user lets go of click
 function sliderAction() {
-    console.log('slider action')
-    console.log(this.value)
 
     gridSize = this.value
     restart()
@@ -77,8 +75,11 @@ function listen() {
     let sliderInput = document.querySelector('input')
     sliderInput.addEventListener('mouseup', sliderAction)
     sliderInput.addEventListener('input', sliderAction)
+
+    document.getElementById("myinput").oninput = function() {
+        var value = (this.value-this.min)/(this.max-this.min)*100
+        this.style.background = 'linear-gradient(to right, #FE5163 0%, #FE5163 ' + value + '%, #fff ' + value + '%, #fff 100%)'
+      };
 }
 
 listen()
-// sketchpad.style.background-color = 'black';
-
